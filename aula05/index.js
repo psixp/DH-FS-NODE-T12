@@ -158,3 +158,4 @@ const removerPet = (id, lista) =>{
 
 removerPet(2, pets)
 
+// code . -> abre no vs code a pasta que estamos navegando
