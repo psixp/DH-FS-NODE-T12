@@ -1,73 +1,81 @@
 const moment = require("moment")
-// Listar Pets
 
-console.log(moment().format('DD/MM/YYYY'))
-console.log(moment("15092005", "DDMMYYYY").fromNow())
-return;
-
-const listaPets = pets =>{
-    pets.forEach((pet) =>{
-        console.log(`Nome: ${pet.nome}\nTipo:${pet.tipo}`)
-    })
-    console.log("Temos o total de " + pets.length + " no sistema")
+const listarPets = (pets) => {
+  pets.forEach((pet) => {
+    console.log("Nome: " + pet.nome + "\n" + "Tipo: " + pet.tipo);
+  });
+  console.log("Temos o total de " + pets.length + " pet(s) registrado(s) no sistema");
 }
 
-
-//Validador
-function validaDados(objetoPet){
-    return(
+const validaDados = (objetoPet) => {
+  return (
     typeof objetoPet.nome === 'string' &&
     typeof objetoPet.tipo === 'string' &&
     typeof objetoPet.raca === 'string' &&
     typeof objetoPet.idade === 'number' &&
     typeof objetoPet.genero === 'string' &&
-    typeof objetoPet.vacinado === 'boolean')
+    typeof objetoPet.vacinado === 'boolean'
+  ) 
 }
 
-
-// Cadastrar Pets
-let cadastrarPet = (pets, objetoPet) =>{
-    if (typeof objetoPet == "object"){
-        if (validaDados(objetoPet)){
-            pets.push(objetoPet)
-        }else {
-            console.log('O obj informado não possui todas as propriedades necessarias')
-        }
-    }else{
-        console.log("Informe blablabla...")
+const cadastrarPet = (pets, objetoPet) => {
+  if (typeof objetoPet == "object") {  
+    if(validaDados(objetoPet)){
+      pets.push(objetoPet)
+      console.log(pets)
+    } else {
+      console.log("O objeto informado não possui todas as propriedades necessárias")
     }
-    
-    console.log(pets)
+  } else {
+    console.log("Informe um objeto para cadastrar um novo pet")
+  }
 }
 
-// Serviços para Pets
-let servicosPrestados = (pet, servicoRealizado) =>{
-    servicoRealizado(pet)
+const servicosPrestados = (pet, servicoRealizado) => {
+  servicoRealizado(pet)
 }
 
-//Dar Banho no Pet
-let darBanhoNoPet = (pet) =>{
-    pet.servicos.push("banho")
-    console.log(`O pet ${pet.nome} tomou banho na data ${moment().format('DD/MM/YYYY')}`)
+const darBanhoNoPet = (pet) => {
+  let data = new Date();
+  data = data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
+  pet.servicos.push("banho na data " + data);
+  console.log("O pet " + pet.nome + " tomou banho");
 }
 
-// Tosar o Pet
-let tosarPet = (pet) =>{
-    pet.servicos.push("tosar")
-    console.log(`O pet ${pet.nome} foi tosado na data ${moment().format('DD/MM/YYYY')}`)
+const tosarPet = (pet) => {
+  let data = new Date();
+  data = data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
+  pet.servicos.push("tosa na data " + data);
+  console.log("O pet " + pet.nome + " foi tosado");
 }
 
-// Filtra Pets
-let filtraPet = (lista, nomePet) =>{
-    let petsFiltrados = lista.filter((pet) =>{
-        return pet.nome == nomePet
-    })
+const cadastrarPetsSpreadOperator = (pets, json) => {
+  let arrayPetsJson = JSON.parse(json);
+  pets.push(...arrayPetsJson)
 
-    if(petsFiltrados.length > 0){
-        return petsFiltrados
-    }else {
-        return "Nenhum pet encontrado com o nome" + nomePet
-    }
+  return pets
+}
+
+const cadastrarPetsFor = (pets, json) => {
+  let arrayPetsJson = JSON.parse(json)
+
+  for (let index = 0; index < arrayPetsJson.length; index++) {    
+    pets.push(arrayPetsJson[index])
+  }
+
+  return pets
+}
+
+const filtrarPetPorNome = (lista, nomePet) => {
+  let petsFiltrados = lista.filter((pet) => {
+    return pet.nome == nomePet
+  });
+
+  if(petsFiltrados.length > 0){
+    return petsFiltrados
+  } else {
+    return "Nenhum pet foi encontrado com o nome " + nomePet
+  }
 }
 
 // Contador de Pets
@@ -94,27 +102,28 @@ let contaVacina = (lista) =>{
     console.log("--------------------------------------------")
 }
 
-// Remover Pets
+const removerPet = (id, lista) => {
+  let pet = lista.filter((pet) => {
+    return pet.id == id
+  });
 
-const removerPet = (id, lista) =>{
-    let pet = lista.filter((pet) =>{
-        return pet.id == id 
-        })
-    if(pet.length > 0){
-        pets.splice(id -1, 1)
-        console.log(pets)
-    }else{
-        console.log("Não encontramos o pet")
-    }
+  if(pet.length > 0){
+    lista.splice(id - 1, 1)
+    console.log(lista)
+  } else {
+    console.log("Não encontramos nenhum pet com o id: " + id)
+  }
 }
 
-module.exports = {
-    listaPets,
-    cadastrarPet,
-    servicosPrestados,
-    darBanhoNoPet,
-    tosarPet,
-    filtraPet,
-    contaVacina,
-    removerPet
+module.exports = { 
+  listarPets,
+  cadastrarPet,
+  servicosPrestados,
+  darBanhoNoPet,
+  tosarPet,
+  cadastrarPetsSpreadOperator,
+  cadastrarPetsFor,
+  filtrarPetPorNome,
+  contaVacina,
+  removerPet
 }
