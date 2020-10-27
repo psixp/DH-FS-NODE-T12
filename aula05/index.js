@@ -95,7 +95,7 @@ let tosarPet = (pet) =>{
     console.log(`O pet ${pet.nome} foi tosado`)
 }
 
-//servicosPrestados(pets[0], darBanhoNoPet)
+servicosPrestados(pets[], darBanhoNoPet)
 
 let filtraPet = (lista, nomePet) =>{
     let petsFiltrados = lista.filter((pet) =>{
@@ -156,6 +156,6 @@ const removerPet = (id, lista) =>{
     }
 }
 
-removerPet(2, pets)
+//removerPet(3, pets)
 
 // code . -> abre no vs code a pasta que estamos navegando
