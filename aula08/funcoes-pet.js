@@ -1,5 +1,17 @@
 const moment = require("moment")
 
+
+
+
+// Solução traduzida do ex da aula 08 com moment
+moment.locale('pt-br')
+console.log(moment("15092005", "DDMMYYYY").fromNow())
+
+// teste de tradução
+// moment.locale('pt-br')
+// console.log(moment.locale())
+// console.log(moment().format('DD/MM/YYYY'))
+
 const listarPets = (pets) => {
   pets.forEach((pet) => {
     console.log("Nome: " + pet.nome + "\n" + "Tipo: " + pet.tipo);
@@ -35,18 +47,16 @@ const servicosPrestados = (pet, servicoRealizado) => {
   servicoRealizado(pet)
 }
 
-const darBanhoNoPet = (pet) => {
-  let data = new Date();
-  data = data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
-  pet.servicos.push("banho na data " + data);
-  console.log("O pet " + pet.nome + " tomou banho");
+//Dar Banho no Pet
+let darBanhoNoPet = (pet) =>{
+    pet.servicos.push("banho")
+    console.log(`O pet ${pet.nome} tomou banho na data ${moment().format('DD/MM/YYYY')}`)
 }
 
-const tosarPet = (pet) => {
-  let data = new Date();
-  data = data.getDate() + "/" + (data.getMonth() + 1) + "/" + data.getFullYear();
-  pet.servicos.push("tosa na data " + data);
-  console.log("O pet " + pet.nome + " foi tosado");
+// Tosar o Pet
+let tosarPet = (pet) =>{
+    pet.servicos.push("tosar")
+    console.log(`O pet ${pet.nome} foi tosado na data ${moment().format('DD/MM/YYYY')}`)
 }
 
 const cadastrarPetsSpreadOperator = (pets, json) => {

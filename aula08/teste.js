@@ -6,7 +6,14 @@ let series = [ { "id": 1, "name": "Friends" },
 const express = require('express');
 const app = express();
 
-console.log(series)
+const listarSeries = (series) => {
+    series.forEach((id) => {
+      console.log("Nome: " + id.name + "\n" + "id: " + id.id);
+    });
+    console.log("Temos o total de " + series.length + " serie(s) registrada(s) no sistema");
+  }
+
+listarSeries(series)
 
 app.get("/serie/:id", (req, res) =>{
     let id = req.params.id
