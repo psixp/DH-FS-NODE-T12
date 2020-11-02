@@ -4,13 +4,15 @@ const moment = require("moment")
 
 
 // Solução traduzida do ex da aula 08 com moment
-moment.locale('pt-br')
-console.log(moment("15092005", "DDMMYYYY").fromNow())
 
+// console.log(moment("15092005", "DDMMYYYY").fromNow())
 // teste de tradução
 // moment.locale('pt-br')
 // console.log(moment.locale())
 // console.log(moment().format('DD/MM/YYYY'))
+
+// Solução traduzida do ex da aula 08 com date-fns
+
 
 const listarPets = (pets) => {
   pets.forEach((pet) => {
