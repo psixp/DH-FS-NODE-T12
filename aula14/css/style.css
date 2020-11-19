@@ -1,0 +1,122 @@
+
+
+
+header{
+    background-color: #ffb90f;
+    height: 32%;
+    width: 100%;
+    padding: 20px 0px 20px 0px ; /* 1º cima | 2º esquerda | 3º baixo | 4º dir*/
+    margin: 30px 50px 0px 0px;
+    border: solid orange 5px;
+    position: relative;
+    border-radius: 0px 0px 20px 20px;
+}
+
+header nav img{
+    width: 200px;
+    position: absolute;
+    margin-top: -70px;
+
+    
+}
+
+header nav ul li{
+    display: inline-block;
+    font-weight: bold;
+    list-style: none;
+    margin-left: 150px;
+    padding: 15px 0px 0px 50px;
+    
+}
+
+header nav ul li a{
+    text-decoration: none;
+    display: inline-block;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+
+header form, header form {
+    display: inline-block;
+    
+}
+
+header form {
+    position: relative;
+    margin-left: 1050px;
+    margin-top: -100px;
+}
+
+.container {
+    height: 900px;
+    width: 650px;
+    margin: 80px auto;
+}
+
+.product-img {
+    background-image: url("../img/product-1.jpg");
+    
+}
+
+.products {
+    display: inline-block;
+    width: 300px;
+    height: 300px;
+    background-position: center;
+    background-size: cover;
+    margin: 0 15px 15px 0;
+    border-radius: 15px 0 15px 0px;
+}
+
+.img-label {
+    width: 100px;
+    height: 100px;
+    margin: 5px 0 0 200px ;
+}
+
+.name-product{
+    height: 35px;
+    color: white;
+    background-color: #101010;
+    font-size: 20px;
+    text-align: center;
+    padding-top: 10px;
+    margin-top: 50px;
+    
+}
+
+.see-more {
+    background-color: #ff4500;
+    box-sizing: border-box;
+    border: solid rgb(218, 143, 4);
+    color: white;
+    border-radius: 10px;
+    margin: 10px 10px 10px 120px;
+    width: 90px;
+    height: 40px;
+
+}
+
+footer{
+    background-color: #ffb90f;
+    height:100px ;
+    width: 100%;
+    color: white;
+    text-align: center;
+    border: solid orange 5px;
+    font-size: 20px;
+    border-radius: 20px 20px 0px 0px;
+    line-height: 100px;
+}
+
+.products:hover{
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+header form input:focus{
+    outline-color: orange;
+    border-color:orange;
+}
