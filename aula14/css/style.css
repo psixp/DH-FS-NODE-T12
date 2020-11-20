@@ -1,4 +1,6 @@
-
+body {
+    background-color: rgb(68, 68, 68);
+}
 
 
 header{
@@ -111,10 +113,16 @@ footer{
     line-height: 100px;
 }
 
+.see-more:hover{
+    cursor: pointer;
+}
+
 .products:hover{
     opacity: 0.8;
     cursor: pointer;
 }
+
+
 
 header form input:focus{
     outline-color: orange;
